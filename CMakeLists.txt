@@ -27,20 +27,20 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Svg)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        shapes.h
-        shapes.cpp
-        drawingscene.h
-        drawingscene.cpp
-        commands.h
-        commands.cpp
-        shapedialog.h
-        shapedialog.cpp
-        shapelistdock.h
-        shapelistdock.cpp
+        src/main.cpp
+        src/ui/mainwindow.h
+        src/ui/mainwindow.cpp
+        src/ui/mainwindow.ui
+        src/ui/shapedialog.h
+        src/ui/shapedialog.cpp
+        src/ui/shapelistdock.h
+        src/ui/shapelistdock.cpp
+        src/model/shapes.h
+        src/model/shapes.cpp
+        src/scene/drawingscene.h
+        src/scene/drawingscene.cpp
+        src/commands/commands.h
+        src/commands/commands.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -66,6 +66,13 @@ else()
     endif()
 endif()
 
+target_include_directories(SAPR PRIVATE
+    src
+    src/commands
+    src/model
+    src/scene
+    src/ui
+)
 target_link_libraries(SAPR PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

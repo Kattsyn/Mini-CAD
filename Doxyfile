@@ -12,10 +12,10 @@ OUTPUT_DIRECTORY       = docs
 #---------------------------------------------------------------------------
 # Input
 #---------------------------------------------------------------------------
-INPUT                  = . mainpage.md
+INPUT                  = src mainpage.md
 USE_MDFILE_AS_MAINPAGE = mainpage.md
 FILE_PATTERNS          = *.h *.cpp
-RECURSIVE              = NO
+RECURSIVE              = YES
 EXCLUDE                = build/
 EXCLUDE_PATTERNS       = moc_* ui_* *.moc
 
