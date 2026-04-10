@@ -1,0 +1,53 @@
+# Doxyfile — Мини-САПР
+
+#---------------------------------------------------------------------------
+# Project
+#---------------------------------------------------------------------------
+PROJECT_NAME           = "Мини-САПР"
+PROJECT_NUMBER         = 0.1
+PROJECT_BRIEF          = "Mini CAD application — parametric modelling, undo/redo, Qt Widgets"
+PROJECT_LOGO           =
+OUTPUT_DIRECTORY       = docs
+
+#---------------------------------------------------------------------------
+# Input
+#---------------------------------------------------------------------------
+INPUT                  = . mainpage.md
+USE_MDFILE_AS_MAINPAGE = mainpage.md
+FILE_PATTERNS          = *.h *.cpp
+RECURSIVE              = NO
+EXCLUDE                = build/
+EXCLUDE_PATTERNS       = moc_* ui_* *.moc
+
+#---------------------------------------------------------------------------
+# Source parsing
+#---------------------------------------------------------------------------
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+BUILTIN_STL_SUPPORT    = YES
+
+#---------------------------------------------------------------------------
+# Output
+#---------------------------------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_COLORSTYLE        = LIGHT
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+
+GENERATE_LATEX         = NO
+
+#---------------------------------------------------------------------------
+# Diagrams (no Graphviz required)
+#---------------------------------------------------------------------------
+HAVE_DOT               = NO
+
+#---------------------------------------------------------------------------
+# Warnings
+#---------------------------------------------------------------------------
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
