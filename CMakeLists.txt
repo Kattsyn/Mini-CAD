@@ -24,10 +24,11 @@ if(APPLE)
 endif()
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Svg)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg 3DCore 3DExtras 3DRender 3DInput 3DLogic)
 
 set(PROJECT_SOURCES
         src/main.cpp
+        # UI
         src/ui/mainwindow.h
         src/ui/mainwindow.cpp
         src/ui/mainwindow.ui
@@ -35,12 +36,28 @@ set(PROJECT_SOURCES
         src/ui/shapedialog.cpp
         src/ui/shapelistdock.h
         src/ui/shapelistdock.cpp
+        src/ui/shapedialog3d.h
+        src/ui/shapedialog3d.cpp
+        src/ui/arraydialog.h
+        src/ui/arraydialog.cpp
+        src/ui/propertypanel.h
+        src/ui/propertypanel.cpp
+        # Model
         src/model/shapes.h
         src/model/shapes.cpp
+        src/model/shape3d.h
+        src/model/shape3d.cpp
+        # Scene (2D)
         src/scene/drawingscene.h
         src/scene/drawingscene.cpp
+        # Commands
         src/commands/commands.h
         src/commands/commands.cpp
+        src/commands/commands3d.h
+        src/commands/commands3d.cpp
+        # Viewer (3D)
+        src/viewer/viewer3d.h
+        src/viewer/viewer3d.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -72,8 +89,17 @@ target_include_directories(SAPR PRIVATE
     src/model
     src/scene
     src/ui
+    src/viewer
 )
-target_link_libraries(SAPR PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg)
+target_link_libraries(SAPR PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::3DCore
+    Qt${QT_VERSION_MAJOR}::3DExtras
+    Qt${QT_VERSION_MAJOR}::3DRender
+    Qt${QT_VERSION_MAJOR}::3DInput
+    Qt${QT_VERSION_MAJOR}::3DLogic
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
